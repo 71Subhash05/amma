@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage - Dictionary</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+</head>
+<body class="storage-page">
+    <div class="storage-container">
+        <h1>Search History Database</h1>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Word</th>
+                        <th>Telugu Word</th>
+                        <th>Telugu Meaning</th>
+                        <th>English Meaning</th>
+                        <th>Synonyms</th>
+                        <th>Use Case 1</th>
+                        <th>Use Case 2</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="storageBody"></tbody>
+            </table>
+        </div>
+        <button onclick="location.href='home.html'">Back to Home</button>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        initializeUsers();
+        if (!sessionStorage.getItem('currentUser')) {
+            location.href = 'login.html';
+        }
+        loadStorage();
+    </script>
+</body>
+</html>

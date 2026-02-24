@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Dictionary</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-card">
+            <h2>Login</h2>
+            <div class="error-msg" id="errorMsg"></div>
+            <input type="text" id="username" placeholder="Roll Number" autocomplete="off">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <button onclick="adminLogin()" class="admin-btn">🔐 ADMIN</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Ensure Firebase is loaded before allowing login
+        window.addEventListener('load', function() {
+            if (typeof firebase === 'undefined' || typeof database === 'undefined') {
+                document.querySelector('.login-card').innerHTML = '<h2>Loading Firebase...</h2><p>Please wait...</p>';
+                setTimeout(() => location.reload(), 3000);
+            }
+        });
+    </script>
+</body>
+</html>
